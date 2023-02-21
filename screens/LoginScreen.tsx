@@ -31,7 +31,11 @@ const validationSchema = yup.object({
 		.required("Password is required."),
 });
 
-export default function LoginScreen() {
+interface IProps {
+	navigation: { navigate: (name: string) => {} };
+}
+
+export default function LoginScreen({ navigation }: IProps) {
 	const resolver = useYupValidationResolver(validationSchema);
 	const {
 		control,
@@ -41,6 +45,10 @@ export default function LoginScreen() {
 
 	const submitHandler = (data: FormData) => {
 		console.log(data);
+		// send data to backend and authenticate user
+
+		// if user authenticated
+		navigation.navigate("AccountScreen");
 	};
 
 	return (
@@ -82,6 +90,7 @@ export default function LoginScreen() {
 					color={Colors.textLight}
 					size={20}
 					onPress={handleSubmit(submitHandler)}
+					testID='loginBtn'
 				>
 					Log in
 				</IconButton>
