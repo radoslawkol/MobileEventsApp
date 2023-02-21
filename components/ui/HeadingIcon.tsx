@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 interface IProps {
-	icon: "login" | "home";
+	icon: "login" | "home" | "user";
 	size: number;
 	color: string;
 	children: string;

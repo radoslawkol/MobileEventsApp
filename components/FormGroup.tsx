@@ -32,7 +32,9 @@ export default function FormGroup({
 			<View style={styles.group}>
 				<Text style={styles.label}>{label}</Text>
 				<TextInput
-					secureTextEntry={name === "password" ? true : false}
+					secureTextEntry={
+						name === "password" || name === "confirmPassword" ? true : false
+					}
 					style={styles.input}
 					value={value}
 					onChangeText={onChange}

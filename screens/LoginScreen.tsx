@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Colors from "../constants/Colors";
 import HeadingIcon from "../components/ui/HeadingIcon";
@@ -52,7 +52,7 @@ export default function LoginScreen({ navigation }: IProps) {
 	};
 
 	return (
-		<View style={styles.wrapper}>
+		<ScrollView style={styles.wrapper}>
 			<HeadingIcon icon='login' size={24} color={Colors.secondary}>
 				Log In
 			</HeadingIcon>
@@ -95,7 +95,7 @@ export default function LoginScreen({ navigation }: IProps) {
 					Log in
 				</IconButton>
 			</View>
-		</View>
+		</ScrollView>
 	);
 }
 
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
 		paddingHorizontal: 40,
-		paddingVertical: 40,
+		marginVertical: 40,
 	},
 	formContainer: {
 		justifyContent: "space-around",
