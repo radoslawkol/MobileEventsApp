@@ -1,3 +1,4 @@
+import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Colors from "../constants/Colors";
@@ -49,7 +50,7 @@ const validationSchema = yup.object({
 });
 
 interface IProps {
-	navigation: { navigate: (name: string) => {} };
+	navigation: { navigate: (name: string) => void };
 }
 
 export default function SignUpScreen({ navigation }: IProps) {
