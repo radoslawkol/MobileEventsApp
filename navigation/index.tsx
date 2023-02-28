@@ -117,7 +117,7 @@ export default function Navigator() {
 		);
 	}
 
-	let isAuthenticated = false;
+	let isAuthenticated = true;
 	return (
 		<NavigationContainer>
 			{isAuthenticated ? <AuthenticatedBottomTab /> : <BottomTab />}
