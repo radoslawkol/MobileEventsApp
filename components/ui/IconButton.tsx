@@ -9,6 +9,7 @@ interface IProps {
 	onPress: () => void;
 	children: string;
 	testID?: string;
+	style?: object;
 }
 
 export default function IconButton({
@@ -18,6 +19,7 @@ export default function IconButton({
 	onPress,
 	children,
 	testID,
+	style,
 }: IProps) {
 	return (
 		<Pressable
@@ -26,10 +28,9 @@ export default function IconButton({
 			testID={testID}
 		>
 			<View style={styles.container}>
-				
-					<AntDesign name={icon} size={size} color={color} />
-			
-				<Text style={styles.text}>{children}</Text>
+				<AntDesign name={icon} size={size} color={color} />
+
+				<Text style={[styles.text, style]}>{children}</Text>
 			</View>
 		</Pressable>
 	);
