@@ -1,8 +1,17 @@
 import { View, Text, StyleSheet } from "react-native";
-import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5, Ionicons } from "@expo/vector-icons";
 
 interface IProps {
-	icon: "login" | "home" | "user" | "bookmark" | "calendar" | "clockcircleo";
+	icon:
+		| "login"
+		| "home"
+		| "user"
+		| "bookmark"
+		| "calendar"
+		| "clockcircleo"
+		| "location-outline"
+		| "user"
+		| "cash-outline";
 	size: number;
 	color: string;
 	children: string;
@@ -20,6 +29,10 @@ export default function HeadingIcon({
 		<View style={styles.container}>
 			{icon === "bookmark" ? (
 				<FontAwesome5 name={icon} size={size} color={color} />
+			) : icon === "location-outline" ? (
+				<Ionicons name={icon} size={size} color={color} />
+			) : icon === "cash-outline" ? (
+				<Ionicons name={icon} size={size} color={color} />
 			) : (
 				<AntDesign name={icon} size={size} color={color} />
 			)}

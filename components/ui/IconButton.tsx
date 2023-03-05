@@ -1,14 +1,14 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 
 interface IProps {
 	icon: "user";
 	size: number;
 	color: string;
-	onPress: () => {};
+	onPress: () => void;
 	children: string;
-	testID: string;
+	testID?: string;
 }
 
 export default function IconButton({
@@ -26,7 +26,9 @@ export default function IconButton({
 			testID={testID}
 		>
 			<View style={styles.container}>
-				<AntDesign name={icon} size={size} color={color} />
+				
+					<AntDesign name={icon} size={size} color={color} />
+			
 				<Text style={styles.text}>{children}</Text>
 			</View>
 		</Pressable>

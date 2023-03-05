@@ -1,14 +1,15 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 
 interface IProps {
-	icon?: "user";
+	icon?: "user" | "map";
 	size?: number;
 	color?: string;
 	onPress: () => void;
 	children: string;
 	testID?: string;
+	style?: object;
 }
 
 export default function OutlineButton({
@@ -18,6 +19,7 @@ export default function OutlineButton({
 	onPress,
 	children,
 	testID,
+	style,
 }: IProps) {
 	return (
 		<Pressable
@@ -25,9 +27,13 @@ export default function OutlineButton({
 			style={({ pressed }) => [styles.button, pressed && styles.pressed]}
 			testID={testID}
 		>
-			<View style={styles.container}>
-				<AntDesign name={icon} size={size} color={color} />
-				<Text style={styles.text}>{children}</Text>
+			<View style={[styles.container, style]}>
+				{icon === "map" ? (
+					<FontAwesome5 name={icon} size={size} color={color} />
+				) : (
+					<AntDesign name={icon} size={size} color={color} />
+				)}
+				<Text style={[styles.text, style]}>{children}</Text>
 			</View>
 		</Pressable>
 	);
