@@ -1,5 +1,5 @@
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
-import HeadingIcon from "../components/ui/HeadingIcon";
+import EventDetails from "../components/EventDetails";
 import IconButton from "../components/ui/IconButton";
 import OutlineButton from "../components/ui/OutlineButton";
 import Colors from "../constants/Colors";
@@ -16,6 +16,14 @@ export default function DetailScreen({ navigation }: IProps) {
 	function followHandler() {
 		console.log("followed");
 	}
+
+	const data = {
+		address: "San Francisco, Long Street 34",
+		date: "23.02.2023",
+		time: "14.30",
+		price: 25,
+		maxMembers: 1550,
+	};
 
 	return (
 		<ScrollView style={styles.container}>
@@ -38,48 +46,7 @@ export default function DetailScreen({ navigation }: IProps) {
 					Volutpat diam at dictum ultrices.
 				</Text>
 			</View>
-			<View style={styles.detailsContainer}>
-				<HeadingIcon
-					style={styles.textItem}
-					icon='location-outline'
-					size={24}
-					color={Colors.secondary}
-				>
-					San Francisco, Long Street 34
-				</HeadingIcon>
-				<HeadingIcon
-					style={styles.textItem}
-					icon='calendar'
-					size={20}
-					color={Colors.secondary}
-				>
-					23.02.2023
-				</HeadingIcon>
-				<HeadingIcon
-					style={styles.textItem}
-					icon='clockcircleo'
-					size={20}
-					color={Colors.secondary}
-				>
-					14.30
-				</HeadingIcon>
-				<HeadingIcon
-					style={styles.textItem}
-					icon='cash-outline'
-					size={20}
-					color={Colors.secondary}
-				>
-					25$
-				</HeadingIcon>
-				<HeadingIcon
-					style={styles.textItem}
-					icon='user'
-					size={20}
-					color={Colors.secondary}
-				>
-					1550
-				</HeadingIcon>
-			</View>
+			<EventDetails {...data} />
 			<View style={styles.buttonContainer}>
 				<IconButton
 					icon='user'
@@ -126,14 +93,7 @@ const styles = StyleSheet.create({
 		letterSpacing: 1,
 		lineHeight: 20,
 	},
-	textItem: {
-		marginBottom: 6,
-		fontSize: 16,
-		color: Colors.textDark,
-	},
-	detailsContainer: {
-		marginVertical: 30,
-	},
+
 	buttonContainer: {
 		width: 250,
 		flexDirection: "row",

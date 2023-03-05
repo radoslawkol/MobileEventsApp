@@ -14,7 +14,7 @@ interface IProps {
 		| "cash-outline";
 	size: number;
 	color: string;
-	children: string;
+	children: React.ReactNode;
 	style?: object;
 }
 
@@ -30,7 +30,12 @@ export default function HeadingIcon({
 			{icon === "bookmark" ? (
 				<FontAwesome5 name={icon} size={size} color={color} />
 			) : icon === "location-outline" ? (
-				<Ionicons name={icon} size={size} color={color} />
+				<Ionicons
+					name={icon}
+					size={size}
+					color={color}
+					style={styles.translateLeft}
+				/>
 			) : icon === "cash-outline" ? (
 				<Ionicons name={icon} size={size} color={color} />
 			) : (
@@ -50,5 +55,8 @@ const styles = StyleSheet.create({
 	heading: {
 		marginLeft: 4,
 		fontSize: 18,
+	},
+	translateLeft: {
+		transform: [{ translateX: -2 }],
 	},
 });
