@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useRoute } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
@@ -14,6 +14,10 @@ import AccountScreen from "../screens/AccountScreen";
 import AddEventScreen from "../screens/AddEventScreen";
 import LogoutBtn from "../components/LogoutBtn";
 import FavouritesScreen from "../screens/FavouritesScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import DetailScreen from "../screens/DetailScreen";
+import ViewMapScreen from "../screens/ViewMapScreen";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 export default function Navigator() {
 	function BottomTab() {
@@ -21,17 +25,26 @@ export default function Navigator() {
 
 		return (
 			<BottomTab.Navigator
-				screenOptions={{
-					headerTitle: (props) => <LogoTitle />,
-					headerTintColor: Colors.textDark,
-					tabBarStyle: { backgroundColor: Colors.secondary },
-					tabBarActiveTintColor: Colors.lightActive,
-					tabBarInactiveTintColor: Colors.lightInActive,
+				screenOptions={({ route }) => {
+					const currentRoute = getFocusedRouteNameFromRoute(route);
+					return {
+						headerShown:
+							currentRoute === "Detail"
+								? false
+								: currentRoute === "ViewMap"
+								? false
+								: true,
+						headerTitle: (props) => <LogoTitle />,
+						headerTintColor: Colors.textDark,
+						tabBarStyle: { backgroundColor: Colors.secondary },
+						tabBarActiveTintColor: Colors.lightActive,
+						tabBarInactiveTintColor: Colors.lightInActive,
+					};
 				}}
 			>
 				<BottomTab.Screen
 					name='Home'
-					component={HomeScreen}
+					component={HomeStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
 							<AntDesign name='home' size={size} color={color} />
@@ -61,23 +74,59 @@ export default function Navigator() {
 		);
 	}
 
+	function HomeStack() {
+		const Stack = createNativeStackNavigator();
+		return (
+			<Stack.Navigator>
+				<Stack.Screen
+					name='Home'
+					component={HomeScreen}
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<Stack.Screen
+					name='Detail'
+					component={DetailScreen}
+					options={{
+						title: "About Event",
+					}}
+				/>
+				<Stack.Screen
+					name='ViewMap'
+					component={ViewMapScreen}
+					options={{ title: "Location" }}
+				/>
+			</Stack.Navigator>
+		);
+	}
+
 	function AuthenticatedBottomTab() {
 		const BottomTabAccount = createBottomTabNavigator();
-
 		return (
 			<BottomTabAccount.Navigator
-				screenOptions={{
-					headerTitle: (props) => <LogoTitle />,
-					headerTintColor: Colors.textDark,
-					tabBarStyle: { backgroundColor: Colors.secondary },
-					tabBarActiveTintColor: Colors.lightActive,
-					tabBarInactiveTintColor: Colors.lightInActive,
-					headerRight: () => <LogoutBtn />,
+				screenOptions={({ route }) => {
+					console.log(getFocusedRouteNameFromRoute(route));
+					const currentRoute = getFocusedRouteNameFromRoute(route);
+					return {
+						headerShown:
+							currentRoute === "Detail"
+								? false
+								: currentRoute === "ViewMap"
+								? false
+								: true,
+						headerTitle: (props) => <LogoTitle />,
+						headerTintColor: Colors.textDark,
+						tabBarStyle: { backgroundColor: Colors.secondary },
+						tabBarActiveTintColor: Colors.lightActive,
+						tabBarInactiveTintColor: Colors.lightInActive,
+						headerRight: () => <LogoutBtn />,
+					};
 				}}
 			>
 				<BottomTabAccount.Screen
 					name='Home'
-					component={HomeScreen}
+					component={HomeStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
 							<AntDesign name='home' size={size} color={color} />
