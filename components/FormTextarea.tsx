@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import Colors from "../constants/Colors";
 
@@ -9,48 +10,57 @@ type ErrorObject = {
 };
 
 interface IProps {
+	MAX_WORDS: number;
 	value: string;
 	name: string;
 	defaultValue: string;
-	numeric?: boolean;
-	maxLength?: number;
 	onChange: (...event: any[]) => void;
 	onBlur: () => void;
 	errors: ErrorObject;
 }
 
-export default function FormGroup({
+export default function FormTextarea({
+	MAX_WORDS,
 	value,
 	name,
 	onChange,
 	onBlur,
 	defaultValue,
 	errors = {},
-	maxLength,
-	numeric,
 }: IProps) {
+	const [words, setWords] = useState(0);
 	const label = name.charAt(0).toUpperCase() + name.slice(1);
-	console.log(errors);
+
+	function countWords(text: string) {
+		const words = text.trim().split(" ").length;
+		setWords(words);
+	}
+
+	function changeTextHandler(text: string) {
+		countWords(text);
+		onChange(text);
+	}
 	return (
 		<>
 			<View style={styles.group}>
 				<Text style={styles.label}>{label}</Text>
 				<TextInput
-					keyboardType={numeric ? "numeric" : "default"}
+					multiline={true}
+					numberOfLines={6}
 					testID={name + "Input"}
-					secureTextEntry={
-						name === "password" || name === "confirmPassword" ? true : false
-					}
 					style={styles.input}
 					value={value}
-					onChangeText={onChange}
+					onChangeText={changeTextHandler}
 					onBlur={onBlur}
 					defaultValue={defaultValue}
 				/>
-				{errors[name] && (
-					<Text style={styles.errorMessage}>{errors[name].message}</Text>
-				)}
+				<Text style={styles.counter}>
+					{words}/{MAX_WORDS}
+				</Text>
 			</View>
+			{errors[name] && (
+				<Text style={styles.errorMessage}>{errors[name].message}</Text>
+			)}
 		</>
 	);
 }
@@ -60,7 +70,6 @@ const styles = StyleSheet.create({
 		marginBottom: 30,
 	},
 	input: {
-		marginBottom: 24,
 		padding: 8,
 		fontSize: 16,
 		color: Colors.secondary,
@@ -79,5 +88,11 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		backgroundColor: Colors.error,
 		transform: [{ translateY: -15 }],
+	},
+	counter: {
+		margin: 4,
+		flexDirection: "row",
+		alignSelf: "flex-end",
+		color: Colors.secondary,
 	},
 });

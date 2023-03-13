@@ -3,7 +3,7 @@ import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 
 interface IProps {
-	icon?: "user" | "map";
+	icon?: "user" | "map" | "calendar";
 	size?: number;
 	color?: string;
 	onPress: () => void;
@@ -27,13 +27,13 @@ export default function OutlineButton({
 			style={({ pressed }) => [styles.button, pressed && styles.pressed]}
 			testID={testID}
 		>
-			<View style={[styles.container, style]}>
+			<View style={[styles.container, { borderColor: color }, style]}>
 				{icon === "map" ? (
 					<FontAwesome5 name={icon} size={size} color={color} />
 				) : (
 					<AntDesign name={icon} size={size} color={color} />
 				)}
-				<Text style={[styles.text, style]}>{children}</Text>
+				<Text style={[styles.text, { color }, style]}>{children}</Text>
 			</View>
 		</Pressable>
 	);

@@ -3,7 +3,7 @@ import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 
 interface IProps {
-	icon: "user";
+	icon: "user" | "pluscircleo" | "calendar";
 	size: number;
 	color: string;
 	onPress: () => void;

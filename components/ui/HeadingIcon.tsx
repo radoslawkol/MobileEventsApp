@@ -11,7 +11,7 @@ interface IProps {
 		| "clockcircleo"
 		| "location-outline"
 		| "user"
-		| "cash-outline";
+		| "cash-outline" | "pluscircleo";
 	size: number;
 	color: string;
 	children: React.ReactNode;
