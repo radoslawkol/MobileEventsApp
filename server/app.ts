@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import authRouter from "./routes/authRouter.js";
+import eventRouter from "./routes/eventRouter.js";
 
 dotenv.config({
 	path: `./.env`,
@@ -11,11 +12,8 @@ let app: Express = express();
 
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-	res.send("hello a");
-});
-
 app.use(authRouter);
+app.use("/events", eventRouter);
 
 mongoose.connect(`${process.env.DATABASE_URI}`);
 

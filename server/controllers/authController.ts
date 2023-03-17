@@ -51,7 +51,7 @@ export const signup = async (req: Request, res: Response) => {
 		console.log(err);
 		res.status(500).json({
 			status: "fail",
-			message: err,
+			message: err.message,
 		});
 	}
 };
@@ -101,7 +101,7 @@ export const login = async (req: Request, res: Response) => {
 	} catch (err) {
 		res.status(500).json({
 			status: "fail",
-			message: err,
+			message: err.message,
 		});
 	}
 };
