@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Event from "./Event.js";
 
 const userSchema = new mongoose.Schema({
 	firstName: {
@@ -18,6 +19,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: [true, "Password is required."],
 	},
+	followed: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
 });
 
 const User = mongoose.model("User", userSchema);

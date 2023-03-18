@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-export const authenticate = (
+export const authenticate = async (
 	req: Request,
 	res: Response,
 	next: NextFunction
@@ -12,13 +12,14 @@ export const authenticate = (
 		if (authorization) {
 			const token = authorization.split(" ")[1];
 
-			jwt.verify(token, process.env.JWT_SECRET_KEY, (err, userId) => {
+			jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
 				if (err) {
 					return res.status(403).json({
 						status: "fail",
 						message: "You are not authorized to perform this action.",
 					});
 				}
+				req.userId = user.id;
 				next();
 			});
 		} else {
@@ -28,9 +29,10 @@ export const authenticate = (
 			});
 		}
 	} catch (err) {
+		console.log(err);
 		res.status(500).json({
 			status: "fail",
-			mesasge: "Server error.",
+			mesasge: err.message,
 		});
 	}
 };

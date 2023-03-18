@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import authRouter from "./routes/authRouter.js";
 import eventRouter from "./routes/eventRouter.js";
+import followedEventsRouter from "./routes/followedEventsRouter.js";
 
 dotenv.config({
 	path: `./.env`,
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use(authRouter);
 app.use("/events", eventRouter);
+app.use("/followed-events", followedEventsRouter);
 
 mongoose.connect(`${process.env.DATABASE_URI}`);
 
