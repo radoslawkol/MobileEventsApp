@@ -43,7 +43,7 @@ export const signup = async (req: Request, res: Response) => {
 		res.status(200).json({
 			status: "success",
 			data: {
-				user,
+				user: { firstName, surname, email },
 				token,
 			},
 		});

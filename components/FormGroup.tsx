@@ -30,7 +30,7 @@ export default function FormGroup({
 	numeric,
 }: IProps) {
 	const label = name.charAt(0).toUpperCase() + name.slice(1);
-	console.log(errors);
+	// console.log(errors);
 	return (
 		<>
 			<View style={styles.group}>

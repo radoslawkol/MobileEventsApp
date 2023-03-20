@@ -20,6 +20,7 @@ export const authenticate = async (
 					});
 				}
 				req.userId = user.id;
+				req.userToken = token;
 				next();
 			});
 		} else {

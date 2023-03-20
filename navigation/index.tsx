@@ -18,8 +18,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DetailScreen from "../screens/DetailScreen";
 import ViewMapScreen from "../screens/ViewMapScreen";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { useContext } from "react";
+import { AuthContext } from "../store/authContext";
 
 export default function Navigator() {
+	const [state, dispatch] = useContext(AuthContext);
+
 	function BottomTab() {
 		const BottomTab = createBottomTabNavigator();
 
@@ -166,7 +170,7 @@ export default function Navigator() {
 		);
 	}
 
-	let isAuthenticated = true;
+	let isAuthenticated = state?.user ? true : false;
 	return (
 		<NavigationContainer>
 			{isAuthenticated ? <AuthenticatedBottomTab /> : <BottomTab />}

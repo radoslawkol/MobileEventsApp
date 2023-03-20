@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Colors from "../constants/Colors";
@@ -7,6 +7,9 @@ import IconButton from "../components/ui/IconButton";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../lib/reactHookForm";
 import FormGroup from "../components/FormGroup";
+import { AuthContext } from "../store/authContext";
+import ErrorMessage from "../components/ui/ErrorMessage";
+import { loginUser } from "../helpers/loginUser";
 
 type FormData = {
 	email: string;
@@ -37,6 +40,8 @@ interface IProps {
 }
 
 export default function LoginScreen({ navigation }: IProps) {
+	const [state, dispatch] = useContext(AuthContext);
+	const [error, setError] = useState("");
 	const resolver = useYupValidationResolver(validationSchema);
 	const {
 		control,
@@ -44,12 +49,8 @@ export default function LoginScreen({ navigation }: IProps) {
 		formState: { errors },
 	} = useForm<FormData>({ resolver });
 
-	const submitHandler = (data: FormData) => {
-		console.log(data);
-		// send data to backend and authenticate user
-
-		// if user authenticated
-		navigation.navigate("AccountScreen");
+	const submitHandler = async (data: FormData) => {
+		loginUser(data, setError, state, dispatch, navigation);
 	};
 
 	return (
@@ -95,6 +96,7 @@ export default function LoginScreen({ navigation }: IProps) {
 				>
 					Log in
 				</IconButton>
+				{error && <ErrorMessage>{error}</ErrorMessage>}
 			</View>
 		</ScrollView>
 	);

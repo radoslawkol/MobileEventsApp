@@ -1,12 +1,16 @@
 import { SvgUri } from "react-native-svg";
 import { View, Text, StyleSheet, Image } from "react-native";
 import Colors from "../constants/Colors";
+import { useContext } from "react";
+import { AuthContext } from "../store/authContext";
 
 export default function AccountScreen() {
+	const [state, dispatch] = useContext(AuthContext);
+	const { firstName, email, eventsFollowed, eventsAdded } = state.user;
 	return (
 		<View style={styles.container}>
 			<Text style={styles.heading}>
-				Welcome, <Text style={styles.headingStrong}>Andrew</Text>
+				Welcome, <Text style={styles.headingStrong}>{firstName}</Text>
 			</Text>
 			<Text style={styles.subHeading}>
 				Have a nice time in our app. We hope you like it.
@@ -15,7 +19,7 @@ export default function AccountScreen() {
 			<View style={styles.list}>
 				<View style={styles.item}>
 					<Text style={styles.itemLabel}>email:</Text>
-					<Text>test@gmail.com</Text>
+					<Text>{email}</Text>
 				</View>
 				<View style={styles.item}>
 					<Text style={styles.itemLabel}>since:</Text>
@@ -23,11 +27,11 @@ export default function AccountScreen() {
 				</View>
 				<View style={styles.item}>
 					<Text style={styles.itemLabel}>followed Events:</Text>
-					<Text>12</Text>
+					<Text>{eventsFollowed}</Text>
 				</View>
 				<View style={styles.item}>
 					<Text style={styles.itemLabel}>added Events:</Text>
-					<Text>3</Text>
+					<Text>{eventsAdded}</Text>
 				</View>
 			</View>
 			<View>

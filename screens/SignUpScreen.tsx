@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Colors from "../constants/Colors";
@@ -7,14 +7,11 @@ import IconButton from "../components/ui/IconButton";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../lib/reactHookForm";
 import FormGroup from "../components/FormGroup";
-
-type FormData = {
-	firstName: string;
-	surname: string;
-	email: string;
-	password: string;
-	confirmPassword: string;
-};
+import ErrorMessage from "../components/ui/ErrorMessage";
+import { AuthContext } from "../store/authContext";
+import { FormData } from "../interfaces/FormData";
+import { createUserAccount } from "../helpers/createUserAccount";
+import { INavigation } from "../interfaces/INavigation";
 
 type ErrorData = {
 	[key: string]: {
@@ -49,11 +46,9 @@ const validationSchema = yup.object({
 		.oneOf([yup.ref("password")], "Passwords don't match."),
 });
 
-interface IProps {
-	navigation: { navigate: (name: string) => void };
-}
-
-export default function SignUpScreen({ navigation }: IProps) {
+export default function SignUpScreen({ navigation }: INavigation) {
+	const [state, dispatch] = useContext(AuthContext);
+	const [error, setError] = useState("");
 	const resolver = useYupValidationResolver(validationSchema);
 	const {
 		control,
@@ -61,12 +56,9 @@ export default function SignUpScreen({ navigation }: IProps) {
 		formState: { errors },
 	} = useForm<FormData>({ resolver });
 
-	const submitHandler = (data: FormData) => {
-		console.log(data);
-		// send data to backend and authenticate user
-
-		navigation.navigate("AccountScreen");
-	};
+	function submitHandler(data: FormData) {
+		createUserAccount(data, setError, state, dispatch, navigation);
+	}
 
 	return (
 		<ScrollView style={styles.wrapper}>
@@ -153,6 +145,7 @@ export default function SignUpScreen({ navigation }: IProps) {
 				>
 					Register
 				</IconButton>
+				{error && <ErrorMessage>{error}</ErrorMessage>}
 			</View>
 		</ScrollView>
 	);
