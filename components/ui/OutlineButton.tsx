@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "center",
 		alignItems: "center",
-		borderRadius: 10,
-		borderWidth: 1,
-		borderColor: Colors.textLight,
 		backgroundColor: "transparent",
+		borderWidth: 1,
+		borderRadius: 10,
+		borderColor: Colors.textLight,
 	},
 	text: {
 		marginLeft: 4,

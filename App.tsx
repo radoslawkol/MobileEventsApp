@@ -5,7 +5,7 @@ import { AuthContext } from "./store/authContext";
 import useCachedResources from "./hooks/useCachedResources";
 import Navigation from "./navigation";
 import { authReducer } from "./store/authContext";
-import useCheckIfUserTokenIsValid from "./hooks/getTheUserIfTokenValid";
+import useCheckIfUserTokenIsValid from "./hooks/useCheckIfUserTokenIsValid";
 
 export default function App() {
 	const [state, dispatch] = useReducer(authReducer, null);

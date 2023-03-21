@@ -7,8 +7,8 @@ import OutlineButton from "./ui/OutlineButton";
 interface IProps {
 	item: {
 		id: string;
-		name: string;
-		time: string;
+		eventName: string;
+		eventDatetime: string;
 		date: string;
 	};
 }
@@ -24,7 +24,7 @@ export default function FavouriteCard({ item }: IProps) {
 				colors={["rgba(32, 28, 189, 1)", "rgba(69, 19, 176, 0.79)"]}
 				style={styles.container}
 			>
-				<Text style={styles.name}>{item.name}</Text>
+				<Text style={styles.name}>{item.eventName}</Text>
 				<View style={styles.info}>
 					<HeadingIcon
 						icon='calendar'
@@ -32,7 +32,7 @@ export default function FavouriteCard({ item }: IProps) {
 						color={Colors.textLight}
 						style={styles.date}
 					>
-						{item.date}
+						{item.eventDatetime.slice(0, 10).split("-").reverse().join("-")}
 					</HeadingIcon>
 					<HeadingIcon
 						icon='clockcircleo'
@@ -40,9 +40,11 @@ export default function FavouriteCard({ item }: IProps) {
 						color={Colors.textLight}
 						style={styles.time}
 					>
-						{item.time}
+						{item.eventDatetime.slice(11, -8)}
 					</HeadingIcon>
-					<OutlineButton onPress={unfollowHandler}>Unfollow</OutlineButton>
+					<OutlineButton color={Colors.textLight} onPress={unfollowHandler}>
+						Unfollow
+					</OutlineButton>
 				</View>
 			</LinearGradient>
 		</Pressable>
