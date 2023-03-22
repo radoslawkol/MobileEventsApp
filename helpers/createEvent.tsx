@@ -1,13 +1,13 @@
-import { EventFormData } from "../interfaces/EventFormData";
+import { IEventFormData } from "../interfaces/IEventFormData";
 import { convertToDatetime } from "../utils/convertToDatetime";
 import { API_URL } from "@env";
 import axios from "axios";
 import { INavigation } from "../interfaces/INavigation";
 
 export async function createEvent(
-	data: EventFormData,
+	data: IEventFormData,
 	token: string,
-	setShowSuccessModal: () => void,
+	setShowSuccessModal: React.Dispatch<React.SetStateAction<boolean>>,
 	setError: (error: string) => void,
 	navigation: INavigation
 ) {

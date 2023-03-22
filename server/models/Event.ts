@@ -23,11 +23,11 @@ const eventSchema = new mongoose.Schema({
 		required: [true, "Event datetime is required."],
 	},
 	coordinates: {
-		lat: {
+		latitude: {
 			type: Number,
 			required: [true, "Lattitude is required."],
 		},
-		lng: {
+		longitude: {
 			type: Number,
 			required: [true, "Longitude is required."],
 		},

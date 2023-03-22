@@ -4,8 +4,13 @@ import MapView, { MapPressEvent, Marker, Callout } from "react-native-maps";
 import Colors from "../constants/Colors";
 
 type Coordinates = {
-	lat: number;
+	latitude: number;
+	longitude: number;
+};
+
+type LatLng = {
 	lng: number;
+	lat: number;
 };
 
 type ErrorObject = {
@@ -21,9 +26,7 @@ interface IProps {
 }
 
 export default function MapPicker({ setValue, errors }: IProps) {
-	const [selectedLocation, setSelectedLocation] = useState<Coordinates | null>(
-		null
-	);
+	const [selectedLocation, setSelectedLocation] = useState<LatLng | null>(null);
 	const region = {
 		latitude: 37.78825,
 		longitude: -122.4324,
@@ -37,8 +40,8 @@ export default function MapPicker({ setValue, errors }: IProps) {
 
 		setSelectedLocation({ lat: lat, lng: lng });
 		setValue("coordinates", {
-			lat,
-			lng,
+			latitude: lat,
+			longitude: lng,
 		});
 	}
 

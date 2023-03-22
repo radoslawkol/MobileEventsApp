@@ -1,4 +1,4 @@
-export interface EventFormData {
+export interface IEventFormData {
 	eventName: string;
 	description: string;
 	price: string;
@@ -6,7 +6,7 @@ export interface EventFormData {
 	eventDate: Date;
 	eventTime: Date;
 	coordinates: {
-		lat: number;
-		lng: number;
+		latitude: number;
+		longitude: number;
 	};
 }

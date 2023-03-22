@@ -14,7 +14,7 @@ import RNDateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import FormDateInput from "../components/FormDateInput";
 import { AuthContext } from "../store/authContext";
-import { EventFormData } from "../interfaces/EventFormData";
+import { IEventFormData } from "../interfaces/IEventFormData";
 import { createEvent } from "../helpers/createEvent";
 
 const MAX_WORDS = 300;
@@ -45,8 +45,8 @@ const validationSchema = yup.object({
 	eventDate: yup.date().required("Please set event date."),
 	eventTime: yup.string().required("Please set event time."),
 	coordinates: yup.object({
-		lat: yup.number().required("Try to set location pin on the map."),
-		lng: yup.number().required("Try to set location pin on the map."),
+		latitude: yup.number().required("Try to set location pin on the map."),
+		longitude: yup.number().required("Try to set location pin on the map."),
 	}),
 });
 
@@ -70,7 +70,7 @@ export default function AddEventScreen({ navigation }: IProps) {
 		formState: { errors },
 	} = useForm<FormData>({ resolver });
 
-	function submitHandler(data: EventFormData) {
+	function submitHandler(data: IEventFormData) {
 		createEvent(data, state.token, setShowSuccessModal, setError, navigation);
 	}
 
