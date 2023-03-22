@@ -22,7 +22,9 @@ export default function FavouritesScreen() {
 					style={styles.list}
 					data={data}
 					keyExtractor={(item) => item._id}
-					renderItem={({ item }) => <FavouriteCard item={item} />}
+					renderItem={({ item }) => (
+						<FavouriteCard item={item} setData={setData} />
+					)}
 				/>
 			) : (
 				<Text style={styles.infoText}>You don't have followed events.</Text>

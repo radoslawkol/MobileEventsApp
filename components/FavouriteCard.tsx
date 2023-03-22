@@ -1,21 +1,29 @@
 import { View, Text, Pressable, StyleSheet, Button } from "react-native";
+import { useContext } from "react";
 import Colors from "../constants/Colors";
 import HeadingIcon from "./ui/HeadingIcon";
 import { LinearGradient } from "expo-linear-gradient";
 import OutlineButton from "./ui/OutlineButton";
+import { AuthContext } from "../store/authContext";
+import { followingHelper } from "../helpers/followingHelper";
+
+type Event = {
+	_id: string;
+	eventName: string;
+	eventDatetime: string;
+};
 
 interface IProps {
-	item: {
-		id: string;
-		eventName: string;
-		eventDatetime: string;
-		date: string;
-	};
+	item: Event;
+	setData: React.Dispatch<React.SetStateAction<Event[]>>;
 }
-export default function FavouriteCard({ item }: IProps) {
-	const unfollowHandler = () => {
-		console.log("unfollow");
-	};
+export default function FavouriteCard({ item, setData }: IProps) {
+	const [state, dispatch] = useContext(AuthContext);
+
+	function unfollowHandler() {
+		followingHelper(item._id, setData, state.token);
+	}
+
 	return (
 		<Pressable
 			style={({ pressed }) => [styles.card, pressed && styles.pressed]}
