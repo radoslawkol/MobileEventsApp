@@ -3,44 +3,40 @@ import EventDetails from "../components/EventDetails";
 import IconButton from "../components/ui/IconButton";
 import Colors from "../constants/Colors";
 import { getMapPreview } from "../utils/getMapPreview";
+import { useContext, useState } from "react";
+import { AuthContext } from "../store/authContext";
+import { followingHelper } from "../helpers/followingHelper";
 
-export default function ViewMapScreen() {
-	const data = {
-		title: "San Francisco Rock Festival",
-		address: "San Francisco, Long Street 34",
-		geolocation: {
-			lat: 37.772275,
-			lng: -122.392992,
-		},
-		date: "23.02.2023",
-		time: "14.30",
-		price: 25,
-		maxMembers: 1550,
-	};
+export default function ViewMapScreen({ route }) {
+	const [state, dispatch] = useContext(AuthContext);
+	const [event, setEvent] = useState(route.params.event);
 
-	function followHandler() {}
 	return (
 		<View>
 			<View>
-				<Image
-					style={styles.map}
-					source={{
-						uri: getMapPreview(data.title, data.geolocation),
-					}}
-				/>
+				{event && (
+					<Image
+						style={styles.map}
+						source={{
+							uri: getMapPreview(event.eventName, event.coordinates),
+						}}
+					/>
+				)}
 			</View>
 			<View style={styles.bannerContainer}>
-				<Text style={styles.text}>{data.title}</Text>
-				<IconButton
-					icon='user'
-					size={20}
-					color={Colors.textLight}
-					onPress={followHandler}
-				>
-					Follow
-				</IconButton>
+				<Text style={styles.text}>{event.eventName}</Text>
+				{state && (
+					<IconButton
+						icon='user'
+						size={20}
+						color={Colors.textLight}
+						onPress={() => {}}
+					>
+						{route.params.isEventFollowed ? "Unfollow" : "Follow"}
+					</IconButton>
+				)}
 			</View>
-			<EventDetails {...data} style={styles.detailsCntainer} />
+			<EventDetails {...event} style={styles.detailsCntainer} />
 		</View>
 	);
 }
@@ -55,7 +51,7 @@ const styles = StyleSheet.create({
 		marginVertical: 20,
 	},
 	text: {
-		width: "70%",
+		width: "66%",
 		fontSize: 16,
 		fontWeight: "400",
 		color: Colors.secondary,

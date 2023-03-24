@@ -18,7 +18,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DetailScreen from "../screens/DetailScreen";
 import ViewMapScreen from "../screens/ViewMapScreen";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../store/authContext";
 
 export default function Navigator() {

@@ -1,19 +1,12 @@
-import {
-	View,
-	Text,
-	TextInput,
-	StyleSheet,
-	Image,
-	Button,
-	Alert,
-} from "react-native";
+import { View, Text, StyleSheet, Button, Alert } from "react-native";
 import Colors from "../constants/Colors";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { useState } from "react";
 import { IEvent } from "../interfaces/IEvent";
 import { useGetEvents } from "../hooks/useGetEventsHook";
+
 interface IProps {
-	navigation: { navigate: (screen: string) => void };
+	navigation: { navigate: (screen: string, param: {}) => void };
 }
 
 const region = {
@@ -26,8 +19,9 @@ const region = {
 export default function HomeScreen({ navigation }: IProps) {
 	const [events, setEvents] = useState([]);
 	const [error, setError] = useState("");
-	function navigateHandler() {
-		navigation.navigate("Detail");
+
+	function navigateHandler(eventId: string) {
+		navigation.navigate("Detail", { eventId });
 	}
 
 	useGetEvents(setEvents, setError);
@@ -54,7 +48,7 @@ export default function HomeScreen({ navigation }: IProps) {
 							title={event.eventName}
 							icon={require("../assets/images/location.png")}
 						>
-							<Callout tooltip onPress={navigateHandler}>
+							<Callout tooltip onPress={() => navigateHandler(event._id)}>
 								<View style={styles.labelContainer}>
 									<View>
 										<Text style={styles.labelTitle}>{event.eventName}</Text>

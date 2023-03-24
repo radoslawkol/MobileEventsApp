@@ -6,7 +6,7 @@ import { AuthContext } from "../store/authContext";
 
 export default function AccountScreen() {
 	const [state, dispatch] = useContext(AuthContext);
-	const { firstName, email, eventsFollowed, eventsAdded } = state.user;
+	const { firstName, email, followed, eventsAdded } = state.user;
 	return (
 		<View style={styles.container}>
 			<Text style={styles.heading}>
@@ -22,16 +22,8 @@ export default function AccountScreen() {
 					<Text>{email}</Text>
 				</View>
 				<View style={styles.item}>
-					<Text style={styles.itemLabel}>since:</Text>
-					<Text>02.03.2022</Text>
-				</View>
-				<View style={styles.item}>
 					<Text style={styles.itemLabel}>followed Events:</Text>
-					<Text>{eventsFollowed}</Text>
-				</View>
-				<View style={styles.item}>
-					<Text style={styles.itemLabel}>added Events:</Text>
-					<Text>{eventsAdded}</Text>
+					<Text>{followed.length}</Text>
 				</View>
 			</View>
 			<View>

@@ -9,24 +9,26 @@ type Event = {
 
 export async function followingHelper(
 	id: string,
-	setData: React.Dispatch<React.SetStateAction<Event[]>>,
+	callback: () => void,
 	token: string
 ) {
-	const res = await axios.patch(
-		`${API_URL}/followed-events`,
-		{
-			eventId: id,
-		},
-		{
-			headers: {
-				Authorization: `Bearer ${token}`,
+	try {
+		const res = await axios.patch(
+			`${API_URL}/followed-events`,
+			{
+				eventId: id,
 			},
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		);
+
+		if (res.status === 200) {
+			callback();
 		}
-	);
-
-	if (res.status === 200) {
-		setData((prev) => [...prev].filter((event) => event._id !== id));
+	} catch (err) {
+		console.log(err);
 	}
-
-	console.log(res);
 }

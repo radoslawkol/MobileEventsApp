@@ -50,7 +50,7 @@ export const createEvent = async (req: Request, res: Response) => {
 
 export const getAllEvents = async (req: Request, res: Response) => {
 	try {
-		const events = await Event.find();
+		const events = await Event.find().select("eventName _id coordinates");
 
 		if (events.length === 0) {
 			return res.status(404).json({

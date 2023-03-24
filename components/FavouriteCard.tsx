@@ -20,8 +20,12 @@ interface IProps {
 export default function FavouriteCard({ item, setData }: IProps) {
 	const [state, dispatch] = useContext(AuthContext);
 
-	function unfollowHandler() {
-		followingHelper(item._id, setData, state.token);
+	function followHandler() {
+		followingHelper(
+			item._id,
+			setData((prev) => [...prev].filter((event) => event._id !== item._id)),
+			state.token
+		);
 	}
 
 	return (
@@ -50,7 +54,7 @@ export default function FavouriteCard({ item, setData }: IProps) {
 					>
 						{item.eventDatetime.slice(11, -8)}
 					</HeadingIcon>
-					<OutlineButton color={Colors.textLight} onPress={unfollowHandler}>
+					<OutlineButton color={Colors.textLight} onPress={followHandler}>
 						Unfollow
 					</OutlineButton>
 				</View>

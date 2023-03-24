@@ -4,8 +4,7 @@ interface AuthCtx {
 	user: {
 		firstName: string;
 		email: string;
-		eventsFollowed: number;
-		eventsAdded: number;
+		followed: number;
 	};
 	token: string;
 }
@@ -18,8 +17,7 @@ export const AuthContext = createContext<AuthCtx | null>({
 	user: {
 		firstName: "",
 		email: "",
-		eventsFollowed: 0,
-		eventsAdded: 0,
+		followed: 0,
 	},
 	token: "",
 });
