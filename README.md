@@ -7,6 +7,13 @@ I was curious how mobile development looks like. It is my first mobile app proje
 or improved with more features. But I'm still glad that I designed this project in Figma and completed this project by myself. 
 Now, I have wider perspective and satisfaction that I tried sth different. 
 
+## App
+
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679934609/eventsMobileApp/assets/EventsApp1_afftrf.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935535/eventsMobileApp/assets/EventsAppFollow_d5ke4n.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679934609/eventsMobileApp/assets/EventsApp3_vzthih.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679934609/eventsMobileApp/assets/EventsAppSignup_zgjndy.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935535/eventsMobileApp/assets/EventsAppSignupError_inbhqk.png" width=220 height=460>
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935534/eventsMobileApp/assets/EventsAppAccount_kiwbdz.png" width=220 height=460>
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935534/eventsMobileApp/assets/EventsAppFav_frljiq.png" width=220 height=460>
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935534/eventsMobileApp/assets/EventsAppCreateEvent_ymp2vw.png" width=220 height=460>
+
 ## Used Technologies
 - React Native(managed workflow expo)
 - Typescript
