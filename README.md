@@ -1,11 +1,12 @@
 # MobileEventsApp
-This is mobile app created in React Native. The idea behind it is to find events on map and read more about them. User can also create an account.
-Owning the account enables creating new events and bookmark the most interesting.
+
+## Overview
+This is mobile app created in React Native. The idea behind it is to find events on map and read more about them, also the user can bookmark the most interesting events. 
+An account may be created by user, as well. It enables creating new events, setting their location, adding  details and information.
 
 ## Story
-I was curious how mobile development looks like. It is my first mobile app project. I'm aware that it's not perfect and some things could be done better
-or improved with more features. But I'm still glad that I designed this project in Figma and completed this project by myself. 
-Now, I have wider perspective and satisfaction that I tried sth different. 
+I built this app, because I was curious how mobile development differs from web programming. I decided to create events app, because I wanted to create fullstack mobile app with map.
+Thanks to this project I have wider overview on mobile development and possiblities which React Native offers. The features which I had to dedicate more attention was screen navigating system, which works a bit different while developing on mobile.
 
 ## App
 
