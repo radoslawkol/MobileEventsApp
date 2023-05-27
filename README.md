@@ -10,10 +10,10 @@ Thanks to this project I have wider overview on mobile development and possiblit
 
 ## App
 
-<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679934609/eventsMobileApp/assets/EventsApp1_afftrf.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935535/eventsMobileApp/assets/EventsAppFollow_d5ke4n.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679934609/eventsMobileApp/assets/EventsApp3_vzthih.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679934609/eventsMobileApp/assets/EventsAppSignup_zgjndy.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935535/eventsMobileApp/assets/EventsAppSignupError_inbhqk.png" width=220 height=460>
-<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935534/eventsMobileApp/assets/EventsAppAccount_kiwbdz.png" width=220 height=460>
-<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935534/eventsMobileApp/assets/EventsAppFav_frljiq.png" width=220 height=460>
-<img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679935534/eventsMobileApp/assets/EventsAppCreateEvent_ymp2vw.png" width=220 height=460>
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/r_50/v1679934609/eventsMobileApp/assets/EventsApp1_afftrf.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/r_50/v1679935535/eventsMobileApp/assets/EventsAppFollow_d5ke4n.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/r_50/v1679934609/eventsMobileApp/assets/EventsApp3_vzthih.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/v1679934609/eventsMobileApp/assets/EventsAppSignup_zgjndy.png" width=220 height=460><img src="https://res.cloudinary.com/detfhw9ll/image/upload/r_50/v1685221004/eventsMobileApp/assets/EventsAppSignupError_inbhqk.png" width=220 height=460>
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/r_50/v1679935534/eventsMobileApp/assets/EventsAppAccount_kiwbdz.png" width=220 height=460>
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/r_50/v1679935534/eventsMobileApp/assets/EventsAppFav_frljiq.png" width=220 height=460>
+<img src="https://res.cloudinary.com/detfhw9ll/image/upload/r_50/v1679935534/eventsMobileApp/assets/EventsAppCreateEvent_ymp2vw.png" width=220 height=460>
 
 ## Used Technologies
 - React Native(managed workflow expo)
